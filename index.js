@@ -15,10 +15,19 @@ const shoppingListEl = document.getElementById("shopping-list")
 
 addButtonEl.addEventListener("click", function() {
     let inputValue = inputFieldEl.value
-    
+    if(shoppingListInDB.includes(inputValue)){
+        inputValue = "no duplicates!"
+        inputValue.style.color = "red"
+        setTimeout(function(){
+        clearInputFieldEl()
+
+        }, 1500)
+    }
+    else{
     push(shoppingListInDB, inputValue)
     
     clearInputFieldEl()
+}
 })
 
 onValue(shoppingListInDB, function(snapshot) {
